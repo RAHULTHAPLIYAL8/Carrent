@@ -1,0 +1,65 @@
+body{
+   background:linear-gradient(black,grey);
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+
+}
+
+.container
+{
+    opacity: 0.9;
+    width: 35vw;
+    height: 70vh;
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius:10px;
+    box-shadow: 2px 2px 6px 3px black;
+}
+.box
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+.form
+{
+    margin-top:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.form input
+{
+    height: 3em;
+    width: 20em;
+    font-size: medium;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding-left: 5px;
+
+}
+.form button
+{
+    outline: none;
+    height: 50px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    transition-property:all;
+    transition-duration: 2s;
+    border: none;
+    cursor: pointer;
+}
+.form button:hover
+{
+   transform:translateY(10px);
+}
