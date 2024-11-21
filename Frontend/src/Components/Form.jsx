@@ -1,60 +1,106 @@
 import React, { useState } from 'react';
-import "./Form.css"
-import {NavLink} from "react-router-dom"
+import "./Form.css";
+import { NavLink } from "react-router-dom";
+
 const Form = () => {
   const [formValues, setFormValues] = useState({
-    Name: '',
+    name: '',
     email: '',
     password: '',
-    admin:false,
+    gender: '' // Manage gender as part of the form values
   });
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormValues({
-  //     ...formValues,
-  //     [name]: value,
-  //   });
-  // };
+
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const name = e.target.name;
+    const value = e.target.value;
     setFormValues({
       ...formValues,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value // This will update name, email, password, and gender
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: "include",
-      body: JSON.stringify(formValues)
-    });
-    const data = await response.json();
-    console.log('Success:', data);
+    // Uncomment and adjust as needed
+    // const response = await fetch('http://localhost:3000/signup', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(formValues)
+    // });
+    // const data = await response.json();
+    // if (data.status === "ok") {
+    //   setStatus("Registered Successfully");
+    // }
+    // if (data.status === "error") {
+    //   setStatus("Password is incorrect");
+    // }
+    // if (data.status === "email") {
+    //   setStatus("Email already exists");
+    // }
+    console.log(formValues);
   };
+
   return (
-    <>
-      <div className="box">
-        <div className='container' >
-          <form className="form" onSubmit={handleSubmit}>
-            <input onChange={handleInputChange} name="Name" autoComplete="off" value={formValues.Name} type="text" placeholder='Enter your name' />
-            <input onChange={handleInputChange} name="email" autoComplete="off" value={formValues.email} type="email" placeholder='Enter your Email' />
-            <input onChange={handleInputChange} name="password" autoComplete="off" value={formValues.password} type="password" placeholder='Enter your password' />
-            <label style={{ fontWeight: "100" }} name="admin" htmlfor="myCheckbox">Admin</label>
-            <input onChange={handleInputChange} style={{ fontSize: "10px", fontWeight: "10" }} type="checkbox" id="myCheckbox" name="admin"  checked={formValues.admin}></input>
-
-            <button>Click</button>
-            <p>If you have already account
-              <NavLink activeClassName="active" to={"/Sign"}>Sign in</NavLink>
-            </p>
-
-          </form>
-        </div>
+    <div className="box">
+      <div className='container'>
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            onChange={handleInputChange}
+            name="name"
+            autoComplete="off"
+            value={formValues.name}
+            type="text"
+            placeholder='Enter your name'
+          />
+          <input
+            onChange={handleInputChange}
+            name="email"
+            autoComplete="off"
+            value={formValues.email}
+            type="email"
+            placeholder='Enter your email'
+          />
+          <input
+            onChange={handleInputChange}
+            name="password"
+            autoComplete="off"
+            value={formValues.password}
+            type="password"
+            placeholder='Enter your password'
+          />
+          <hr />
+          <div className='form-group'>
+            <input
+              type="radio"
+              id="male"
+              name="gender"
+              value="Male"
+              checked={formValues.gender === "Male"}
+              onChange={handleInputChange}
+              style={{ width: "20px" }}
+            />
+            <label htmlFor="male" style={{ fontWeight: 'bold' }}>Male</label><br />
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="Female"
+              checked={formValues.gender === "Female"}
+              onChange={handleInputChange}
+              style={{ width: "20px" }}
+            />
+            <label htmlFor="female" style={{ fontWeight: 'bold' }}>Female</label><br />
+          </div>
+          <hr />
+          <button type="submit">Submit</button>
+          <p>If you have an account
+            <NavLink to="/login"> login</NavLink>
+          </p>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -89,3 +89,6 @@ body{
   {
     background-color: white;
   }
+  span:hover{
+    cursor: pointer;
+  }
