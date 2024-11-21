@@ -1,9 +1,9 @@
-#Car Rental Website 🚗
+# Car Rental Website 🚗
 A web application where users can seamlessly book cars of their choice, while admins have the capability to manage the inventory by adding new cars to the platform. 
 
 
 
-![Car login](Demo_Image/Demo1.jpg)
+![Car login](Demo_Image/Demo1.png)
 ![Car Ui](Demo_Image/Demo2.png)
 
 ### User Features: 🌟
