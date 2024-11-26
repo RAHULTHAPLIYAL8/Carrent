@@ -3,6 +3,6 @@ const {addCar,showCar,deleteCar,updateCar}=require("../controllers/car_controlle
 const carRouter=express.Router()
 carRouter.post("/add",addCar);
 carRouter.get("/showcars",showCar);
-carRouter.delete("/deletCar",deleteCar);
+carRouter.delete("/delete",deleteCar);
 carRouter.put("/updateCar",updateCar);
 module.exports=carRouter;

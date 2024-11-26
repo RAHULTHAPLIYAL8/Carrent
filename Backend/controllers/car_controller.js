@@ -9,23 +9,20 @@ const addCar=async(req,res)=>
     }
 const showCar=async(req,res)=>
     {
-        console.log(req.body);
-        const allDetail= await carModel.findAll();
-        res.json({status:"ok",message:"Car deatails add successfully"});
+        const allDetail= await carModel.find();
+        res.json({status:"ok",message:allDetail });
      }
 
 const deleteCar=async(req,res)=>
    {
-       console.log(req.body);
+       console.log(req.body.id);
        const car=await carModel.findByIdAndDelete(req.body.id);
-       car.save();
-       res.json({status:"ok",message:"Car delete Successfully"});
+       res.json({status:"ok",message:car});
    }
 const updateCar=async(req,res)=>
 {
     console.log(req.body);
     const updateCar=await carModel.findByIdAndUpdate(req.body.id,req.body)
-    updateCar.save();
     res.json({status:"ok",message:"Car updated Successfully"});
 }
 module.exports={addCar,showCar,deleteCar,updateCar}

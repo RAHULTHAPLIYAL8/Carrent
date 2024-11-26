@@ -18,7 +18,6 @@ const allCart=async(req,res)=>
  {
     
     const removeCart=await cartModel.findByIdAndDelete(req.body._id);
-    removeCart.save();
     res.json({status:"ok",message:"Remove details from Cart"})
  }
 module.exports={addCart,allCart,removeCart};
